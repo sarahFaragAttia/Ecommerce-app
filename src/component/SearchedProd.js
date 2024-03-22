@@ -19,6 +19,8 @@ const[isLoading,setLoading]=useState(true)
     {isLoading&&<p className="h4">Loading...</p>}
 
     {Prod?Prod.map((element,index)=>
+        <div  className='col-xl-3 p-0  col-md-4 col-sm- mt-4'>   
+
         <div className="card    " key={index} style={{ width: "18rem" }}>
 
         <img src={element.images[0]} class="card-img-top" alt="..." />
@@ -32,7 +34,7 @@ const[isLoading,setLoading]=useState(true)
             <p>{element.price}</p>
         </div>
     </div>
-
+</div>
 
     )
     :<p className="h3">Not Available</p>}

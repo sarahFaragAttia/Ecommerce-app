@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import search from '../pictures/search.svg';
 import SearchedProd from './SearchedProd';
 import Rating from './Rating';
+import DropDown from './DropDown';
 
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
  return (
         <div className='container m-auto'>
             <div class="input-group flex-nowrap m-auto w-50 mt-4 mb-4  ">
+            <DropDown/>
 
                 <input type="text"  value={Value} onChange={updateValue} class="form-control  " placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" />
                 <img src={search}  onClick={ handleSearch}   class=" bi bi-search input-group-text" id="addon-wrapping" />
