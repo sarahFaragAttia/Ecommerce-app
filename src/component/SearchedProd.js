@@ -1,9 +1,12 @@
 
 import axios from "axios"
 import { useState,useEffect } from "react"
+import { Link } from "react-router-dom";
+import StockBadge from "./StockBadge";
+import CartButton from "./CartButton";
 const SearchedProd=({name})=>{
 
-const [Prod,setSearchTitleProd]=useState([])
+const [prodList,setSearchTitleProd]=useState([])
 const[isLoading,setLoading]=useState(true)
 
     useEffect(()=> {axios.get(`https://dummyjson.com/products/search?q=${name}`)
@@ -18,23 +21,36 @@ const[isLoading,setLoading]=useState(true)
 <>
     {isLoading&&<p className="h4">Loading...</p>}
 
-    {Prod?Prod.map((element,index)=>
-        <div  className='col-xl-3 p-0  col-md-4 col-sm- mt-4'>   
+    {prodList?prodList.map((element,index)=>
 
-        <div className="card    " key={index} style={{ width: "18rem" }}>
+        < div className='col-xl-3 p-0  col-md-4 col-sm- mt-4'>
+                                    <Link to={`/productDetails/${element.id}`} >
+                                        <div className="card  h-100 position-relative position-relative " key={index} style={{ width: "18rem" }}>
+                                            <StockBadge stock={element.stock} />
+                                            <img src={element.images[0]} class=" h-100 card-img-top" alt="..." />
 
-        <img src={element.images[0]} class="card-img-top" alt="..." />
+                                            <div class="card-body">
+                                            
+                                                <div className='d-flex flex-row justify-content-between'>
+                                                    <h5 class="card-title d-inline   fw-semibold">{element.title} </h5>
+                                                    <p className="d-inline fw-semibold">{element.price}$</p>
+                                                </div>
+                                                <p class="card-text">{element.description}</p>
+                                            </div>
+                                        </div>
+                                        {/* <Rating update={false} id={index} /> */}
+                                    </Link>
+                                    <CartButton index={index} productList={prodList}/>
+                                    </div>
 
-        <div class="card-body">
 
-            <h5 class="card-title">{element.title}</h5>
 
-            <p class="card-text">{element.description}</p>
 
-            <p>{element.price}</p>
-        </div>
-    </div>
-</div>
+
+
+
+
+    
 
     )
     :<p className="h3">Not Available</p>}

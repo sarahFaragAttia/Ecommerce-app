@@ -14,15 +14,14 @@ console.log(res.data)})
 
 
     return(
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
+    <div >
+
+  <ul className=" row m-2 p-0" >
   {dropList?.map((item)=>
-    <Link  to={`/cat/${item}`} class="dropdown-item" > <li>{item}</li></Link>
+    <Link to={`/cat/${item}`} class=" col  d-inline p-0" > <span class="badge  text-bg-light m-1">{item}</span></Link>
     )}
   </ul>
 </div>
     )}
     export default DropDown;
+  

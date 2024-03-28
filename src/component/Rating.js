@@ -1,38 +1,34 @@
-import React, { useState } from 'react';
+// import React, { useState,useEffect } from 'react'
+// import star from '../pictures/star.svg'
+// import axios from 'axios';
 
-const Rating = () => {
-  const [rating, setRating] = useState(0);
-  const [hoverRating, setHoverRating] = useState(0);
+// // npm install react-icons and use incon
+// import { FaStar } from "react-icons/fa";
+// const Rating=(props,{id})=>{
 
-  const handleRating = (index) => {
-    setRating(index + 1);
-  };
+//   const[Rating,setRate]=useState([{click:false},{click:false},{click:false},{click:false}])
 
-  return (
-    <div className='rating'>
-      {[...Array(5)].map((_, index) => (
-<span className='star' key={index}>
-          ☆
-          <span
-            className={`filled ${hoverRating > index ? 'hover' : ''}`}
-            onMouseEnter={() => setHoverRating(index + 1)}
-            onMouseLeave={() => setHoverRating(0)}
-            onClick={() => handleRating(index)}
-            role='radio'
-            tabIndex={0}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                handleRating(index);
-              }
-            }}
-          >
-            ☆
-          </span>
-        </span>
-      ))}
-      <span>{rating}</span>
-    </div>
-  );
-};
+// useEffect(()=>{ axios.put(`https://dummyjson.com/products/${id}`,JSON.stringify(Rating))
+// .then(res=> {console.log(res.data)})
+// .catch(error=>{console.log('fetching error:',error)})},[Rating])
 
-export default Rating;
+
+//   const handleClick=(index)=>{
+//     props.update?
+//  setRate(prevRate => prevRate.map(
+//   (item) => item == Rating[index] ? { ...item, click: !item.click } : { ...item }))
+//   : setRate(Rating)
+//     console.log(Rating[index]);
+//   }
+
+//   return (
+//     <ul className='list-unstyled d-inline'>
+
+// {Rating?.map((element,index)=>
+//       <li className='d-inline m-1'><FaStar  key={index}  onClick={()=>handleClick(index)} style={(element.click)?{color:"yellow"}:{color:'currentcolor'}} /></li>)
+//    }
+//     </ul>
+//   );
+// }
+
+// export default Rating;
