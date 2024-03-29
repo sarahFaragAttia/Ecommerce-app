@@ -13,6 +13,10 @@ const ProductAmount = ({ stock, index }) => {
   const cartList = useSelector((state) => state.cart.value)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    SetAmount(cartList.find(item => item.id === index)?.amount || 0);
+  }, [cartList,index]);
+
 
   useEffect(() => {
     axios.get("https://dummyjson.com/products")
@@ -24,26 +28,24 @@ const ProductAmount = ({ stock, index }) => {
   }, [])
 
 
-  useEffect(() => {
-    SetAmount(cartList.find(item => item.id === index)?.amount || 0);
-  }, [cartList, index]);
 
 
 
   const handleAddItem = () => {
-
-    Amount >0 && dispatch(addAmount(index))
-    Amount === 0 &&dispatch(addItem({id:index,product:prodList[index],amount:1}))
+    const availableItem=cartList.find(item=>item.id===index)
+    availableItem && dispatch(addAmount({index:index,No:1 }))
+    !availableItem&&dispatch(addItem({id:index,product:prodList[index],amount:1}))
  
     console.log(cartList);
   console.log(index);
   }
 
  const handleRemoveAmount=()=>{
-  Amount >1  &&dispatch(decAmount(index))
+  const availableItem=cartList.find(item=>item.id===index)
+  availableItem.amount>1  &&dispatch(decAmount({index:index,No:1 }))
   const deleteItem =cartList.find(item=>item.id===index)
   const ind=cartList.indexOf(deleteItem)
-  Amount === 1 && dispatch(removeItem(ind))
+  availableItem.amount === 1 && dispatch(removeItem(ind))
   cartList.map(item=>item.id===index&& SetAmount(item.amount))
   console.log(cartList)
  }
@@ -56,7 +58,7 @@ const ProductAmount = ({ stock, index }) => {
      
         <button onClick={handleAddItem} type="button" class="btn ">+</button>
       </div>
-      <span>only {stock} left don't miss it </span>
+      <span  >only {stock} left don't miss it </span>
     </>
 
 

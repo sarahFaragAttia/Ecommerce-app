@@ -4,13 +4,21 @@ import { useEffect, useState } from "react";
 import StockBadge from "./StockBadge";
 // import Rating from "./Rating";
 import ProductAmount from "./ProductAmount";
+import Quantity from "./Quantity";
+import CartButton from "./CartButton";
+import {Link} from "react-router-dom"
 const ProductDetails = () => {
     const params = useParams()
     const [prodDetails, setProdDetails] = useState()
 
     const [loading, setLoading] = useState(true)
 
+   const [amount,setAmount]=useState()
 
+   const handleAmount=(Amount)=>{
+setAmount(Amount)
+console.log("fina",amount)
+   }
 
     useEffect(() => {
         axios.get(`https://dummyjson.com/products/${params.index} `)
@@ -39,7 +47,14 @@ const ProductDetails = () => {
             <hr />
             <StockBadge  style={{position:'relative'}}  stock={prodDetails?.stock}/>
             <hr/>
-            <ProductAmount index={prodDetails?.id} stock={prodDetails?.stock}/>
+            {/* <ProductAmount index={(prodDetails?.id)-1} stock={prodDetails?.stock}/> */}
+            <Quantity  onAdd={handleAmount} index={(prodDetails?.id)-1} stock={prodDetails?.stock}/>
+            <hr className="m-2 gap-1"/>
+            <div className="mt-4 ">
+         <Link to="/cart">   <button type="button"   style={{width:"50%",transform:'translatex(0) translatey(0)'}} class="btn  w-50 h5 cart rounded-pill btn-outline-dark"> Buy Now</button></Link>
+<CartButton  index={(prodDetails?.id)-1} prodDetails={prodDetails} Amount={amount} style={{width:"50%",transform:'translatex(0) translatey(0)'}} />
+            </div>
+
  </div></div>
 <div className="m-4 row">
          {(prodDetails?.images)&&(prodDetails.images).map((item)=>{

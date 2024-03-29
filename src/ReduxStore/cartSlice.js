@@ -14,14 +14,15 @@ export const cartSlice= createSlice({
 state.value.push(action.payload)
         },
         addAmount:(state,action)=>{
-            state.value.forEach(item=> item.id ===action.payload && {...item,amount:item.amount++})
+            state.value.forEach(item=> item.id ===action.payload.index && (item.amount+=action.payload.No))
         },
         removeItem:(state,action)=>{
             state.value.splice(action.payload,1)
         },
         decAmount:(state,action)=>{
-            state.value.forEach(item=>item.id===action.payload &&{...item,amount:item.amount--}  )
+            state.value.forEach(item=>item.id===action.payload.index &&(item.amount-=action.payload.No) )
         }
+
     }
 })
 

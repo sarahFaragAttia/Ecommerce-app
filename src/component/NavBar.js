@@ -1,5 +1,6 @@
 import cart from "../pictures/cart-fill.svg"
 import {useSelector} from "react-redux"
+import {Link} from "react-router-dom"
 
 const NavBar = () => {
 
@@ -13,7 +14,7 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-brand mb-0 h1">
                     <div class=" position-relative" />
-                    <img src={cart} className="m-" />
+                   <Link to='/cart' ><img src={cart} className="m-" /></Link>
                     <span class=" cart mt-2  position-absolute   translate-middle badge rounded-pill bg-danger">
                         {cartList.length}
                         <span class="visually-hidden">unread messages</span>
