@@ -74,7 +74,7 @@ const dispatch=useDispatch
                                         </div>
                                         {/* <Rating update={false} id={index} /> */}
                                     </Link>
-                                    <CartButton index={index} productList={prodList}/>
+                                    <CartButton  Amount = {1} index={index} productList={prodList}/>
                                     </div>
 
 

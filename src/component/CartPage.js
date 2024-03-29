@@ -1,13 +1,21 @@
 
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import ProductAmount from "./ProductAmount";
 import NavBar from "./NavBar";
 import xsquare from '../pictures/x-square.svg'
+import { removeItem } from "../ReduxStore/cartSlice";
 
 
 const CartPage = () => {
     const cartList = useSelector((state) => state.cart.value)
     console.log(cartList)
+const dispatch=useDispatch()
+
+    const handleRemove=(index)=>{
+
+
+dispatch(removeItem(index))
+    }
     return (
     <>
             <NavBar />
@@ -35,11 +43,11 @@ const CartPage = () => {
                             <ProductAmount  display ={{style:"display-none"}} index={item.id} />
                         </td>
                         <td >
-                            <img src={xsquare}/>
+                            <img  onClick={handleRemove} src={xsquare}/>
                         </td>
                         <td >
                             
-                            <p>{item.amount * item.product.price}</p>
+                            <p>{item.amount * (item.product?.price)}</p>
                         </td>
 
 
