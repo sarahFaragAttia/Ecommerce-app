@@ -3,32 +3,32 @@ import {createSlice} from "@reduxjs/toolkit"
 
 
 const initialState = {
-    value:[]
+    value:JSON.parse(localStorage.getItem('cart')) || []
 }
 
 export const cartSlice= createSlice({
     name:"cart",
     initialState,
     reducers:{
-        addCart:(state,action)=>{
+        addItem :(state,action)=>{
 state.value.push(action.payload)
         },
         addAmount:(state,action)=>{
-
-state.value.length>0 ? state.value.forEach((item)=> item.product.id === (action.payload.ind)?(console.log(item.product.id),
-item.amount++)
-:state.value.push(action.payload.new) )
- :state.value.push(action.payload.new) 
-
-
-
-            // state.value.filter((item=> item.product.id===(action.payload)).forEach(item=>item.amount++) )
+            state.value.forEach(item=> item.id ===action.payload && {...item,amount:item.amount++})
+        },
+        removeItem:(state,action)=>{
+            state.value.splice(action.payload,1)
+        },
+        decAmount:(state,action)=>{
+            state.value.forEach(item=>item.id===action.payload &&{...item,amount:item.amount--}  )
         }
     }
 })
 
 
-export const {addCart}= cartSlice.actions
+export const {addItem}= cartSlice.actions
 export const {addAmount}= cartSlice.actions
+export const {removeItem}= cartSlice.actions
+export const {decAmount}= cartSlice.actions
 
 export default cartSlice.reducer
