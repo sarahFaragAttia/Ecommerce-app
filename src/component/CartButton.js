@@ -3,7 +3,7 @@ import { addItem } from "../ReduxStore/cartSlice";
 import { addAmount } from "../ReduxStore/cartSlice";
 import {useEffect} from "react"
 
-const CartButton=({productList,index,style,prodDetails,Amount})=>{
+const CartButton=({id,style,prod,Amount,props})=>{
 
     const cartList=useSelector((state)=>state.cart.value)
     const dispatch=useDispatch()
@@ -13,17 +13,17 @@ const CartButton=({productList,index,style,prodDetails,Amount})=>{
     useEffect(()=>localStorage.setItem('cart',JSON.stringify(cartList)),[cartList])
 
     const handleAddCart=()=>{
-const availableItem=cartList.find(item=>item.id===index)
-availableItem && dispatch(addAmount(index))
-!availableItem &&dispatch(addItem({id:index,product:prodDetails,amount:Amount}))
+const availableItem=cartList.find(item=>item.product.id===id)
+availableItem && dispatch(addAmount({id:id,No:1}))
+!availableItem &&dispatch(addItem({product:prod,amount:Amount}))
     }
 
 
-console.log(cartList)
+
 
 
     return(
-        <button type="button" style={style} onClick={handleAddCart} class="btn h5 cart rounded-pill btn-outline-dark"> Add to Cart</button>
+        <button type="button" {...props} style={style} onClick={handleAddCart} class="btn h5 cart rounded-pill btn-outline-dark"> Add to Cart</button>
 
     )
 }

@@ -3,7 +3,8 @@ import {createSlice} from "@reduxjs/toolkit"
 
 
 const initialState = {
-    value:JSON.parse(localStorage.getItem('cart')) || []
+    value:JSON.parse(localStorage.getItem('cart'))||[],
+    favourite:JSON.parse(localStorage.getItem("favourite"))||[]
 }
 
 export const cartSlice= createSlice({
@@ -14,13 +15,13 @@ export const cartSlice= createSlice({
 state.value.push(action.payload)
         },
         addAmount:(state,action)=>{
-            state.value.forEach(item=> item.id ===action.payload.index && (item.amount+=action.payload.No))
+            state.value.forEach(item=> item.product?.id ===action.payload.id && (item.amount+=action.payload.No))
         },
         removeItem:(state,action)=>{
             state.value.splice(action.payload,1)
         },
         decAmount:(state,action)=>{
-            state.value.forEach(item=>item.id===action.payload.index &&(item.amount-=action.payload.No) )
+            state.value.forEach(item=>item.product?.id===action.payload.id &&(item.amount-=action.payload.No) )
         }
 
     }

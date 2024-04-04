@@ -7,7 +7,7 @@ const InputSearch=(props)=>{
 
     const updateValue = (e) => {
         setValue(e.target.value);
-        console.log(Value)
+        
     }
 
     return(
@@ -19,7 +19,7 @@ const InputSearch=(props)=>{
         
             <div class="input-group mb-3">
                 <input type="text" class="form-control" value={Value} onChange={updateValue} placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                <img src={search} onClick={()=>{props.onAdd(Value)}} class="btn btn-outline-secondary" type="button" id="button-addon2" />
+                <img src={search} onClick={()=>{props.onAdd(Value);setValue("")}} class="btn btn-outline-secondary" type="button" id="button-addon2" />
             </div>
 
             </>
