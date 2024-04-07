@@ -1,34 +1,28 @@
-// import React, { useState,useEffect } from 'react'
-// import star from '../pictures/star.svg'
-// import axios from 'axios';
+import { useState } from "react";
+import { CiStar } from "react-icons/ci";
+import { TiStarHalfOutline } from "react-icons/ti";
+import { IconContext } from "react-icons";
+import { Fa500Px, FaStar } from "react-icons/fa";
 
-// // npm install react-icons and use incon
-// import { FaStar } from "react-icons/fa";
-// const Rating=(props,{id})=>{
-
-//   const[Rating,setRate]=useState([{click:false},{click:false},{click:false},{click:false}])
-
-// useEffect(()=>{ axios.put(`https://dummyjson.com/products/${id}`,JSON.stringify(Rating))
-// .then(res=> {console.log(res.data)})
-// .catch(error=>{console.log('fetching error:',error)})},[Rating])
-
-
-//   const handleClick=(index)=>{
-//     props.update?
-//  setRate(prevRate => prevRate.map(
-//   (item) => item == Rating[index] ? { ...item, click: !item.click } : { ...item }))
-//   : setRate(Rating)
-//     console.log(Rating[index]);
-//   }
-
-//   return (
-//     <ul className='list-unstyled d-inline'>
-
-// {Rating?.map((element,index)=>
-//       <li className='d-inline m-1'><FaStar  key={index}  onClick={()=>handleClick(index)} style={(element.click)?{color:"yellow"}:{color:'currentcolor'}} /></li>)
-//    }
-//     </ul>
-//   );
-// }
-
-// export default Rating;
+    const Rating=({prod})=>{
+        // const [prod, setStyle] = useState(3.6);
+        const star = [1, 2, 3, 4, 5];
+      console.log(prod)
+        const rate = Math.floor(prod.rating);
+      
+        return (
+          <div>
+            {star.map((item) => {
+              if (item <= rate) 
+                return <FaStar color="#424290" />
+                if ( item > rate && item <prod.rating+1)
+                
+                return <TiStarHalfOutline color="#424290"    />
+              
+               if ( item>rate)
+              return <CiStar/>
+            })}
+          </div>
+        );
+      };
+    export default Rating;

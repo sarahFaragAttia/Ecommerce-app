@@ -1,85 +1,58 @@
 
 import { useSelector, useDispatch } from "react-redux"
-import { addCart } from "../ReduxStore/cartSlice";
+import { addItem } from "../ReduxStore/cartSlice";
 import { useEffect, useState } from "react"
 import axios from "axios";
-import { addAmount } from "../ReduxStore/cartSlice"
+import { addAmount} from "../ReduxStore/cartSlice"
+import {decAmount} from "../ReduxStore/cartSlice"
+import {removeItem} from "../ReduxStore/cartSlice"
 
-const ProductAmount = ({ stock, index }) => {
-  const [prodList, SetProdList] = useState([])
-
-  useEffect(() => {
-    axios.get("https://dummyjson.com/products")
-      .then(res => {
-        SetProdList(res.data.products);
-        console.log(res.data.products)
-      })
-      .catch(error => console.log('Error Fetch Data:', error))
-  }, [])
-
+const ProductAmount = ({ stock, id,prod,style,display }) => {
+  
+  const [Amount, SetAmount] = useState(0)
   const cartList = useSelector((state) => state.cart.value)
   const dispatch = useDispatch()
-  // const [Amount,setAmount]=useState(0)
-  //  useEffect(()=> cartList.length>0  && setAmount(Amount=>cartList.map((item)=>item.product.id===index ? Amount = item.amount:Amount =0 )),[cartList])
+  const [totalPrice,setTotalPrice]=useState()
 
-  const AddItem = () => {
-  //   cartList.length >0 ?  cartList.map((item)=>
-  //   item.product.id === index?
-  //   (console.log (item.product.id),
-  // dispatch(addAmount(index))): 
-  //  (console.log (index),dispatch(addCart({product:prodList[index],amount : 1}))))
-  //  :(console.log (index),
-  // dispatch(addCart({product:prodList[index],amount : 1})))}
-  //     // setAmount(Amount=>)
+  useEffect(() => {
+    SetAmount(cartList.find(item => item.product?.id === id)?.amount || 0);
+  },[cartList,id]);
+ 
+  const [priceList,setPriceList]=useState([])
+  const [total,setTotal]=useState()
 
 
+// 
 
-// dispatch(addCart({product:prodList[index],amount:1}))
 
-  dispatch(addAmount({ind:index+1 ,new:{product:prodList[index],amount:1}}))
-  // cartList.length<=0 && dispatch(addCart({product:prodList[index],amount: 1}))
+  const handleAddItem = () => {
+    const availableItem=cartList.find(item=>item.product?.id===id)
+    availableItem && dispatch(addAmount({id:id,No:1 }))
+    !availableItem&&dispatch(addItem({product:prod,amount:1}))
+ 
+
   
-  // cartList.length>0 && cartList.filter((item) =>item.product.id === index+1 ?dispatch(addAmount(index+1)):dispatch(addCart({product:prodList[index],amount: 1})))
-
-  console.log(cartList);
-  console.log(index);
-  
-
   }
 
+ const handleRemoveAmount=()=>{
+  const availableItem=cartList.find(item=>item.product?.id===id)
+  availableItem.amount>1  &&dispatch(decAmount({id:id,No:1 }))
+  const deleteItem =cartList.find(item=>item.product?.id===id)
+  const ind=cartList.indexOf(deleteItem)
+ availableItem.amount ===1 && dispatch(removeItem(ind))
 
-   
-  //  cartList.forEach((item, i) => console.log(item.product.id)}
-  //     // item.product.id != index&&
-  //     // dispatch(addCart({ product: prodList[index], amount: 1 }))
-  //     )
-  //    }
-      
-    
-  //   console.log(index),
 
-  //     console.log(cartList)}
-
-    
-
-  
- 
+ }
   return (
     <>
-      <div class=" amountBtn m-4  d-flex flex-row justify-content-center border rounded-pill bg-secondary-subtle  " role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn ">-</button>
-        {cartList?.map((item)=>
-        <>
-        <p>, </p>
-        <p>{item.amount}</p></>)
-        }
-        {/* <span class=" p-2">{Amount}</span> */}
-        {/* {cartList.map((item, i) => item.product.id === index +1 
-        && <span class=" p-2">{item.amount}</span>)} 
-        {cartList.length <=0 && <span class=" p-2"> 0 </span>} */}
-        <button onClick={AddItem} type="button" class="btn ">+</button>
+      <div style={style} class=" amountBtn m-4    d-flex flex-row justify-content-center border rounded-pill bg-secondary-subtle  " role="group" aria-label="Basic mixed styles example">
+        <button  onClick={handleRemoveAmount} type="button" class="btn ">-</button>
+        <span class=" p-2">{Amount}</span>
+        
+     
+        <button onClick={handleAddItem} type="button" class="btn ">+</button>
       </div>
-      <span>only {stock} left don't miss it </span>
+      <span style={display} >only {stock} left don't miss it </span>
     </>
 
 
