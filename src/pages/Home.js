@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import SearchedProd from './SearchedProd';
-// import Rating from './Rating';
-import DropDown from '../DropDown';
-import StockBadge from '../StockBadge';
-import InputSearch from '../InputSearch';
+import SearchedProd from './SearchedProduct';
+import DropDown from '../component/DropDown';
+import StockBadge from '../component/StockBadge';
+import InputSearch from '../component/InputSearch';
 import { useSelector, useDispatch } from "react-redux"
-import { addFav} from "../../ReduxStore/favouriteSlice"
-import { removeFav } from "../../ReduxStore/favouriteSlice"
-import CartButton from '../CartButton';
-import Pagination from '../Pagination';
-import Rating from '../Rating';
+import { addFav} from "../ReduxStore/favouriteSlice"
+import { removeFav } from "../ReduxStore/favouriteSlice"
+import CartButton from '../component/CartButton';
+import Pagination from '../component/Pagination';
+import Rating from '../component/Rating';
     import { FaRegHeart } from "react-icons/fa";
     import { FaHeart } from "react-icons/fa";
 
@@ -84,14 +83,14 @@ console.log(favouriteList)
                             isLoading ? <div className='h3'>Loading...</div>
                                 : prodList?.map((element, index) =>
 
-                                    < div className='col-lg-3 col-md-4 col-sm-5 z-0 position-relative  col-xs-2   mt-4  '>
+                                    < div className='col-lg-3 col-md-4 col-sm-6  z-0 position-relative  col-xs-10   mt-4  '>
                                         
                                      {favouriteList.includes(element) ? <FaHeart  onClick={() => handleAddFav(element, index)} color='#424290' 
                                         style={{ right: "10%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' /> 
                                         : <FaRegHeart onClick={() => handleAddFav(element, index)} color='#424290'
                                          style={{ right: "10%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />}
                                         <Link to={`/productDetails/${element.id}`} style={{ textDecoration: "none" }} >
-                                            <div className="card  m-auto position-relative position-relative " key={index} >
+                                            <div className="card w-100  m-auto position-relative position-relative " key={index} >
                                                 <StockBadge Style={{ position: "absolute" }} stock={element.stock} />
                                                 <img src={element.images[0]} class=" h-100 card-img-top" alt="..." />
 

@@ -1,13 +1,12 @@
 import './App.css';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
-import Home from './component/pages/Home';
-import ProductDetails from './component/pages/ProductDetails';
-import SearchedCat from './component/pages/SearchedCat';
-import CartPage from "./component/pages/CartPage"
+import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
+import SearchedCat from './pages/SearchedCategory';
+import CartPage from "./pages/CartPage"
 import NavBar from './component/NavBar';
-import Formik from './component/pages/FormikLogin'
-import FormikLogin from './component/pages/FormikLogin';
-import FormikRegister from './component/pages/FormikRegister';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -18,8 +17,8 @@ function App() {
         <Route path="" element={<Home/>}/>
         <Route path="/productDetails/:index" element={<ProductDetails/>}/>
         <Route path="/cat/:cat" element={<SearchedCat/>}/>
-        <Route path='/login' element={<FormikLogin/>}/>
-      <Route path="/register" element={<FormikRegister/>}/>
+        <Route path='/login' element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
        
       </Routes>
     </BrowserRouter>)

@@ -1,8 +1,8 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import ProductAmount from "../ProductAmount";
-import xsquare from '../../pictures/x-square.svg'
-import {   removeItem } from "../../ReduxStore/cartSlice";
+import ProductAmount from "../component/ProductAmount";
+import xsquare from '../pictures/x-square.svg'
+import {   removeItem } from "../ReduxStore/cartSlice";
 import { useEffect,useState } from "react";
 
 
@@ -20,24 +20,6 @@ useEffect(()=>setTotalPrice(()=>cartList.reduce((total,item) => {return total+it
 
 [cartList.map(item=>item.price)])
 
-
-//  why i couldn't declare price in the main array from the first 
-// whhy i get infinite loop
-// useEffect(()=>
-        
-        
-            // setProductList(()=> cartList.map(item=>{return {...item,price:item.amount*item.product.price}})),
-            // console.log(cartList),[cartList.map(item => item.amount)])
-
-    // const [total,setTotal]=useState()
-
-//   too reender
-
-
-           
-            // setTotalPrice(()=>priceList.reduce((acc,currentValue)=> NUM + +currentValue,0)),
-           
-        
     
 
 
@@ -48,7 +30,7 @@ useEffect(()=>setTotalPrice(()=>cartList.reduce((total,item) => {return total+it
     return (
     < >
           <h2 className="m-4 fw-bold">Cart</h2>
-            <table className="table m-4 align-item-center">
+            <table className="table  align-item-center">
                 <thead >
                 <tr>
                     <th>Description</th>
@@ -84,7 +66,7 @@ useEffect(()=>setTotalPrice(()=>cartList.reduce((total,item) => {return total+it
                 )}
             </table>
             <div className="w-100 position-relative">
-                <p className="position-absolute  fw-bold end-0">{totalPrice} $</p>
+                <p className="position-absolute fw-bold end-0">{totalPrice} $</p>
                 </div>
             </>
             )

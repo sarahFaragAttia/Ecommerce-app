@@ -5,13 +5,13 @@ font-size: 10px;
 }
 
 span.cart{
-  transform: translate(-80px,-10px);
+  transform: translate(-70px,-10px);
 }
  div.card{
   padding-bottom: 100px;
   width:220px;
   gap:10px;
-  height:530px;
+  height:650px;
  }
  .amountBtn{
   width:105px;
@@ -39,17 +39,14 @@ margin-top: 10px;
  li.previous a, li.next a{
    text-decoration: none;
  }
- .form-control.logIn{
+ .form.logIn{
     border:none;
-  
-   
-   
-    gap:20px;
+
     
  }
- input{
+ /* input{
   width:100%
- }
+ } */
  button[type="submit"]{
     
     position: absolute;
@@ -63,3 +60,13 @@ margin-top: 10px;
   background-color: ghostwhite;
   padding:10px;
  }
+
+
+ .input-group{
+  flex-direction: column;
+ }
+
+table{
+
+margin:50px;
+}

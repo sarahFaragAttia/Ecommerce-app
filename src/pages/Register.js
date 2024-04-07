@@ -1,9 +1,9 @@
 
 import { Formik, Form } from "formik"
-import InputForm from "../InputForm"
+import InputForm from "../component/InputForm"
 
 
-const FormikRegister = () => {
+const Register = () => {
 
     const initialValues = {
         name: "",
@@ -32,14 +32,9 @@ const FormikRegister = () => {
         if (!values.password)
              errors.password = "Required"
 
-        if (!values.confiramtion)
-            errors.confirmation = "Required"
-
-
-        if (values.confirmation !== values.password)
-
-            errors.confirmation = "password not match"
-
+             if (!values.confirmation) errors.confirmation = "Required";
+             else if (values.confirmation !== values.password)
+               errors.confirmation = "Passwords do not match";
         return errors;
 
 }
@@ -47,19 +42,21 @@ const FormikRegister = () => {
 
 
     return (
-        <Formik initialValues={initialValues} onSubmit={onSubmit} validate={validate}>
-            {formik => 
-        <Form className='m-auto mt-4 w-50 position-relative'>
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validate={validate} >
+            {formik =>{ 
+           return( console.log(formik),
+
+        <Form className='m-auto mt-4 w-25  position-relative'>
               
                     <InputForm id="name" text="UserName" type="text" />
                     <InputForm id="email" text="E-mail" type="email" />
                     <InputForm id="password" text="Password" type="password" />
                     <InputForm id="confirmation" text="Re-enter your password" type="password" />
                     <button type='submit' className='m-4 btn h5  rounded-pill btn-outline-dark' disabled={formik.isSubmitting}> Register</button>
-                </Form>}
+                </Form>)}}
         </Formik>
     )
 
 }
 
-export default FormikRegister;
+export default Register;

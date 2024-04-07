@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import {removeFav} from "../../ReduxStore/favouriteSlice"
+import {removeFav} from "../ReduxStore/favouriteSlice"
 import { FaHeart } from "react-icons/fa";
-import CartButton from "../CartButton";
+import CartButton from "./CartButton";
 import { MdDelete } from "react-icons/md";
 import{Link} from 'react-router-dom'
 

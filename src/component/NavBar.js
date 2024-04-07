@@ -2,7 +2,7 @@ import cart from "../pictures/cart-fill.svg"
 import {useSelector} from "react-redux"
 import {Link} from "react-router-dom"
 import {useState} from 'react'
-import Offcanvas from "./pages/Offcanvas"
+import Offcanvas from "./Offcanvas"
 const NavBar = () => {
 const [register,setRegister]= useState(false)
  const handleRegister=()=>{

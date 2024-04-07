@@ -2,13 +2,13 @@
 import axios from "axios"
 import { useState,useEffect } from "react"
 import { Link } from "react-router-dom";
-import StockBadge from "../StockBadge";
-import CartButton from "../CartButton";
-import Rating from "../Rating";
+import StockBadge from "../component/StockBadge";
+import CartButton from "../component/CartButton";
+import Rating from "../component/Rating";
 
 import {  useDispatch,useSelector } from "react-redux";
-import {addFav} from "../../ReduxStore/favouriteSlice"
-import {removeFav} from "../../ReduxStore/favouriteSlice"
+import {addFav} from "../ReduxStore/favouriteSlice"
+import {removeFav} from "../ReduxStore/favouriteSlice"
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 

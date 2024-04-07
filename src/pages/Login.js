@@ -1,8 +1,8 @@
 import {Formik,Form} from 'formik'
-import InputForm from '../InputForm'
+import InputForm from '../component/InputForm'
 
 
-    const FormikLogin =()=>{
+    const Login =()=>{
 
 
 const initialValues={
@@ -47,7 +47,7 @@ return errors
         console.log(formik)
     
     return( 
-        <Form className='m-auto mt-4 w-50 position-relative'>
+        <Form className='m-auto mt-4 col-xl-3 col-lg-4 col-sm-6 col-xs-8  position-relative'>
        <InputForm type='text' id='name'    text="User Name"/>
        <InputForm type='email' id='email' text="Email Address"/>
        <InputForm type='password' id='password' text="Password"/>
@@ -60,7 +60,7 @@ return errors
   )
 }   
 
-export default FormikLogin;
+export default Login;
 
 
 

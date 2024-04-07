@@ -1,16 +1,16 @@
 import { useLocation, useParams } from "react-router-dom"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import StockBadge from "../StockBadge";
+import StockBadge from "../component/StockBadge";
 // import Rating from "./Rating";
-import ProductAmount from "../ProductAmount";
-import Quantity from "../Quantity";
-import CartButton from "../CartButton";
+import ProductAmount from "../component/ProductAmount";
+import Quantity from "../component/Quantity";
+import CartButton from "../component/CartButton";
 import {Link} from "react-router-dom"
-import Rating from "../Rating";
+import Rating from "../component/Rating";
 import {  useDispatch,useSelector } from "react-redux";
-import {addFav} from "../../ReduxStore/favouriteSlice"
-import {removeFav} from "../../ReduxStore/favouriteSlice"
+import {addFav} from "../ReduxStore/favouriteSlice"
+import {removeFav} from "../ReduxStore/favouriteSlice"
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
