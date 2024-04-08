@@ -1,7 +1,7 @@
 
-const Error=({children})=>{
+const Error = ({ children }) => {
 
-    return (<div style={{color:"red"}}>{children}</div>)
+    return (<div style={{ color: "red" }}>{children}</div>)
 }
 
 export default Error;

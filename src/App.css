@@ -27,7 +27,6 @@ margin-top: 10px;
 
  }
  li{
-   /* border:solid 1px; */
    width:50px;
    text-align: center;
    text-decoration: none;
@@ -44,9 +43,9 @@ margin-top: 10px;
 
     
  }
- /* input{
-  width:100%
- } */
+ input{
+  width:50%
+ }
  button[type="submit"]{
     
     position: absolute;
@@ -62,11 +61,14 @@ margin-top: 10px;
  }
 
 
- .input-group{
+ .input-group.form{
   flex-direction: column;
  }
 
 table{
 
-margin:50px;
+margin:px;
+}
+.total{
+  right:35px;
 }
