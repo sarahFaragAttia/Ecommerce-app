@@ -60,7 +60,7 @@ const ProductDetails = () => {
 
                         <div className="col  ">
                             {favouriteList.includes(prodDetails) ? <FaHeart onClick={() => handleAddFav(prodDetails)} color='#424290'
-                                style={{ left: "0%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />
+                                style={{ right: "0%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />
                                 : <FaRegHeart onClick={() => handleAddFav(prodDetails)} color='#424290'
                                     style={{ right: "0%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />}
 
