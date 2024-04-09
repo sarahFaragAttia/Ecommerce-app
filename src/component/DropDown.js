@@ -29,14 +29,26 @@ const DropDown = () => {
   }
 
   return (
-    <div >
+    <>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Categories
+        </button>
+        <ul class="dropdown-menu">
+          {dropList?.map((item, index) =>
+            <Link to={`/cat/${item.category}`} className="text-decoration-none text-black"> <li>{item.category}</li></Link>)}
+        </ul>
+      </div>
+      <div >
 
-      <ul className=" row m-2 p-0" >
-        {dropList?.map((item, index) =>
-          <Link to={`/cat/${item.category}`} class=" col  d-inline p-0" key={index} > <span onClick={() => handleStyle(index)} style={item.style} class="badge  category  m-2 rounded-pill">{item.category}</span></Link>
-        )}
-      </ul>
-    </div>
+        <ul className=" row categories m-2 p-0" >
+          {dropList?.map((item, index) =>
+            <Link to={`/cat/${item.category}`} class=" col  d-inline p-0" key={index} > <span onClick={() => handleStyle(index)} style={item.style} class="badge  category  m-2 rounded-pill">{item.category}</span></Link>
+          )}
+        </ul>
+      </div>
+
+    </>
   )
 }
 export default DropDown;

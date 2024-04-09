@@ -72,3 +72,24 @@ margin:px;
 .total{
   right:35px;
 }
+.dropdown{
+  display:none;
+}
+.search{
+  width:100%;
+}
+@media only screen and (max-width: 600px) {
+  .dropdown {
+    display: inline-block;
+  }
+  .categories{
+    display: none ;
+  }
+  .search{
+    width:75%;
+  }
+  .category-dropdown{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}

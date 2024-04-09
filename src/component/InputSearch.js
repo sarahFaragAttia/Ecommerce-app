@@ -13,11 +13,10 @@ const InputSearch = (props) => {
     return (
 
         <>
-            <p>Welcome to out shopping website , start browsing ...</p>
 
 
 
-            <div class="input-group w-100 mb-3">
+            <div class="input-group search  mb-3">
                 <input type="text" class="form-control" value={Value} onChange={updateValue} placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <img src={search} onClick={() => { props.onAdd(Value); setValue("") }} class="btn btn-outline-secondary" type="button" id="button-addon2" />
             </div>

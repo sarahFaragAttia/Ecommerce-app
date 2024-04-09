@@ -71,19 +71,22 @@ const Home = () => {
 
 
             <div className='container  m-auto'>
+            <p>Welcome to out shopping website , start browsing ...</p>
 
 
+<div className='category-dropdown'>
                 <InputSearch onAdd={searchProdName} />
 
 
                 <DropDown />
+                </div>
                 <div className="row m-auto d-flex flex-row justify-content-between">
                     {prodName ?
                         <SearchedProd name={prodName} /> : (
                             isLoading ? <div className='h3'>Loading...</div>
                                 : prodList?.map((element, index) =>
 
-                                    < div className='col-lg-3 col-md-4 col-sm-6  z-0 position-relative  col-xs-10   mt-4  '>
+                                    < div className='col-lg-3 col-md-4 col-sm-6 col-6  z-0 position-relative     mt-4  '>
 
                                         {favouriteList.includes(element) ? <FaHeart onClick={() => handleAddFav(element, index)} color='#424290'
                                             style={{ right: "10%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />

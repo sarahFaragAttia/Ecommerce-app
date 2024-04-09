@@ -44,7 +44,7 @@ const SearchedProd = ({ name }) => {
 
             {prodList.length !== 0 ?
                 prodList.map((element, index) =>
-                    < div className='col-lg-3 col-md-4 col-sm-6  z-0 position-relative  col-xs-10   mt-4'>
+                    < div className='col-lg-3 col-md-4 col-sm-6 col-6 z-0 position-relative  col-xs-10   mt-4'>
 
                         {favouriteList.includes(element) ? <FaHeart onClick={() => handleAddFav(element)} color='#424290'
                             style={{ right: "10%", top: "10px" }} className='position-absolute  z-1 translate-middle-x ' />

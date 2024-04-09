@@ -13,7 +13,7 @@ const NavBar = () => {
     return (
 
         <nav class="navbar  bg-body-tertiary">
-            <div class="container-fluid ms-4 me-4 mt-2 d-flex flex-row justify-content-between">
+            <div class="container-fluid m-2  mt-2  d-flex flex-row justify-content-between">
                 <div>
                     <Link to='' style={{ textDecoration: "none" }}> <span class="navbar-brand mb-0 h1">ProductsApp</span></Link>
                 </div>
