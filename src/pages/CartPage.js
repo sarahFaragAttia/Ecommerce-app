@@ -7,20 +7,13 @@ import { useEffect, useState } from "react";
 
 
 const CartPage = () => {
-
-
+    const [totalPrice, setTotalPrice] = useState()
+    const dispatch = useDispatch()
     const cartList = useSelector((state) => state.cart.value).map(item => { return { ...item, price: item.amount * item.product?.price } })
     console.log(cartList)
-    const dispatch = useDispatch()
-    const [totalPrice, setTotalPrice] = useState()
 
     useEffect(() => setTotalPrice(() => cartList.reduce((total, item) => { return total + item.price }, 0)),
-
-
-
         [cartList.map(item => item.price)])
-
-
 
 
     const handleDeleteItem = (index) => {

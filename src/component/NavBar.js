@@ -21,7 +21,7 @@ const NavBar = () => {
                     <div class=" position-relative" />
                     <Link to='/login' style={{ textDecoration: "none" }} >  <span className="m-1" style={{ fontSize: "10px" }} >Login</span></Link>
                     <Link to='/register' style={{ textDecoration: "none" }} >  <span className="m-1" style={{ fontSize: "10px" }} >Register</span></Link>
-                    <Link to='/cart' style={{ textDecoration: "none" }}><img src={cart} className="m-" /></Link>
+                    <Link to='/cart' style={{ textDecoration: "none" }}><img src={cart} /></Link>
                     <span class=" cart mt-2  position-absolute   badge rounded-pill bg-danger">
                         {cartList.length}
                         <span class="visually-hidden">unread messages</span>

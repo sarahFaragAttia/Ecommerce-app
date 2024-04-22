@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 const Offcanvas = () => {
 
 
-  const favourite = useSelector((state) => state.favourite.value)
+  const Favourite = useSelector((state) => state.favourite?.value.map(item => { return { ...item, fav: true } }))
   const dispatch = useDispatch()
 
   const handleDelete = (index) => {
@@ -20,7 +20,6 @@ const Offcanvas = () => {
 
 
       <FaHeart color="#424290" type="button" className="ms-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" />
-      {/* <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> */}
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
@@ -31,14 +30,14 @@ const Offcanvas = () => {
         </div>
         <div class="offcanvas-body">
 
-          {favourite && favourite.map((item, index) =>
+          {Favourite?.map((item, index) =>
             <div className="row">
               <div className="col-4">
 
                 <img src={item?.images[0]} style={{ width: "100px", height: "100px" }} />
               </div>
               <div className="col-6">
-                <h1 style={{ fontSize: "20px" }}>{item.title}</h1>
+                <h1 style={{ fontSize: "14px" }}>{item.title}</h1>
                 <Link to={`/ProductDetails/${item.id}`} className="text-decoration-none text-dark">   <p className="text-wrap" style={{ fontSize: "16px" }}>More Details goes here about the product and it'as details</p></Link>
                 <CartButton id={item.id} prod={item} Amount={1} style={{ width: "150px" }} />
 

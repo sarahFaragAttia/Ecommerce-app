@@ -44,14 +44,14 @@ const ProductAmount = ({ stock, id, prod, style, display }) => {
   }
   return (
     <>
-      <div style={style} class=" amountBtn m-4    d-flex flex-row justify-content-center border rounded-pill bg-secondary-subtle  " role="group" aria-label="Basic mixed styles example">
+      <div style={style} class=" amountBtn mt-4 mb-4    d-flex flex-row justify-content-center border rounded-pill bg-secondary-subtle  " role="group" aria-label="Basic mixed styles example">
         <button onClick={handleRemoveAmount} type="button" class="btn ">-</button>
         <span class=" p-2">{Amount}</span>
 
 
         <button onClick={handleAddItem} type="button" class="btn ">+</button>
       </div>
-      <span style={display} >only {stock} left don't miss it </span>
+      <span style={display} className="fs-5" >only {stock} left don't miss it </span>
     </>
 
 

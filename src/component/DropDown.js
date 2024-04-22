@@ -31,7 +31,7 @@ const DropDown = () => {
   return (
     <>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle p-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Categories
         </button>
         <ul class="dropdown-menu">

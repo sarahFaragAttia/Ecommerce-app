@@ -3,7 +3,7 @@ import { addItem } from "../ReduxStore/cartSlice";
 import { addAmount } from "../ReduxStore/cartSlice";
 import { useEffect } from "react"
 
-const CartButton = ({ id, style, prod, Amount, props }) => {
+const CartButton = ({ id, style, prod, Amount, ...props }) => {
 
     const cartList = useSelector((state) => state.cart.value)
     const dispatch = useDispatch()
@@ -18,12 +18,8 @@ const CartButton = ({ id, style, prod, Amount, props }) => {
         !availableItem && dispatch(addItem({ product: prod, amount: Amount }))
     }
 
-
-
-
-
     return (
-        <button type="button" {...props} style={style} onClick={handleAddCart} class="btn h5 cart rounded-pill btn-outline-dark"> Add to Cart</button>
+        <button type="button" {...props} style={style} onClick={handleAddCart} class="btn  cart rounded-pill btn-outline-dark"> Add to Cart</button>
 
     )
 }
