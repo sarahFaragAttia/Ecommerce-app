@@ -26,7 +26,7 @@ const Home = () => {
     useEffect(() => {
         axios.get(`https://dummyjson.com/products?limit=${Offset.limit}&skip=${Offset.skip}`)
             .then(res => {
-                // console.log(res);
+                console.log('res',res);
                 SetProdList(() =>
                     res.data.products.map(item =>
                         Favourite?.some(element => element.id === item.id)
